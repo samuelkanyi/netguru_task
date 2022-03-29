@@ -25,7 +25,9 @@ class MovieItemRow extends StatelessWidget {
         child: Stack(
           children: <Widget>[
             _poster(),
-            _title(context),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              child: _title(context)),
           ],
         ),
       );
@@ -43,9 +45,12 @@ class MovieItemRow extends StatelessWidget {
           padding: const EdgeInsets.all(AppDimensions.spacingNormal),
           child: Row(
             children: [
-              Text(
-                _movie.title,
-                style: AppTextStyles.title().copyWith(color: AppColors.white),
+              Expanded(
+                child: Text(
+                  _movie.title,
+                  softWrap: true,
+                  style: AppTextStyles.title().copyWith(color: AppColors.white),
+                ),
               ),
             ],
           ),
